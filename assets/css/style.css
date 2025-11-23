@@ -1,0 +1,94 @@
+:root {
+
+    --primary-color: rgb(229, 9, 20);
+    --color-white: #fff;
+}
+
+body{
+
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    width: 100%;
+}
+
+body::after{
+
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(360deg, rgba(0, 0, 0, 0.9000) 0.000%,
+            rgba(0, 0, 0, 0.8965) 8.500%,
+            rgba(0, 0, 0, 0.8861) 17.00%,
+            rgba(0, 0, 0, 0.8688) 25.50%,
+            rgba(0, 0, 0, 0.8444) 34.00%,
+            rgba(0, 0, 0, 0.8132) 42.50%,
+            rgba(0, 0, 0, 0.7750) 51.00%,
+            rgba(0, 0, 0, 0.7368) 59.50%,
+            rgba(0, 0, 0, 0.7056) 68.00%,
+            rgba(0, 0, 0, 0.6813) 76.50%,
+            rgba(0, 0, 0, 0.6339) 85.00%,
+            rgba(0, 0, 0, 0.6135) 93.50%,
+            rgba(0, 0, 0, 0.6000) 100%),
+        url(../images/bg.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: blur(3px);
+    z-index: -1;
+}
+
+.logo{
+
+    display: inline-block;
+    height: 100px;
+    width: 150px;
+}
+
+.logo:hover{
+
+    transform: scale(.98);
+}
+
+.nfxBtn{
+
+    background-color: var(--primary-color);
+    color: var(--color-white);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.nfxBtn:hover{
+
+    transform: scale(.98);
+    color: var(--color-white);
+}
+
+.movieModel{
+
+    position: fixed;
+    top: 12%;
+    left: 20%;
+    width: 60%;
+    display: none;
+}
+
+.backDrop{
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+    display: none;
+}
+
+.movieModel.active , .backDrop.active{
+
+    display: block;
+}
