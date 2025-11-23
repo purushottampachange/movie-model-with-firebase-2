@@ -27,8 +27,45 @@
         </div>
     </div>
 
-    <div class="backDrop" id="backDrop">
-        
+    <div class="container-fluid">
+        <div class="row" id="movieContainer">
+            <!-- <div class="col-md-3">
+                <div class="card movieCard text-white">
+                    <div class="card-header p-0">
+                        <div class="row">
+                            <div class="col-10">
+                                <h5>name</h5>
+                            </div>
+                            <div class="col-2">
+                               <h6><span class="badge badge-success">5</span></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <figure>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyvBcv-GLQ1oTBQtmLABTZ9cfRl5q5AXVypN9ieZzQVAwo1yfZbffX-H6rEqdiLc8eXv0CDJRfzCUBvH0OQnL75f7yAiZGZ0crrdySgygZkg&s=10"
+                                alt="">
+                            <figcaption>
+                                <p>
+                                <h6>name</h6>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem iure similique
+                                ipsa. Autem fugiat, voluptates quas sequi reprehenderit corporis hic unde, eum
+                                laboriosam quaerat totam soluta debitis accusamus at dignissimos.
+                                </p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between p-0">
+                        <button class="btn btn-sm btn-success">Edit</button>
+                        <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="backDrop closeBtns" id="backDrop">
+
     </div>
 
     <div class="movieModel" id="movieModel">
@@ -36,7 +73,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <h5>Enter Movie Details</h5>
-                    <i class="fa-solid fa-xmark fa-2x"></i>
+                    <i class="fa-solid fa-xmark fa-2x closeBtns" role="button"></i>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
@@ -67,9 +104,9 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
-                   <button type="submit" class="btn btn-sm btn-dark" id="submitBtn">Add Movie</button>
-                   <button type="button" class="btn btn-sm btn-success d-none" id="updateBtn">Update Movie</button>
-                   <button type ="button" class="btn btn-sm btn-danger">close</button>
+                    <button type="submit" class="btn btn-sm btn-dark" id="submitBtn">Add Movie</button>
+                    <button type="button" class="btn btn-sm btn-success d-none" id="updateBtn">Update Movie</button>
+                    <button type="button" class="btn btn-sm btn-danger closeBtns">close</button>
                 </div>
             </div>
         </form>

@@ -74,7 +74,8 @@ body::after{
     top: 12%;
     left: 20%;
     width: 60%;
-    display: none;
+    display: none; 
+    animation: slideDown .4s ease-in-out;
 }
 
 .backDrop{
@@ -86,9 +87,82 @@ body::after{
     width: 100%;
     background-color: rgba(0,0,0,.5);
     display: none;
+    cursor: pointer;
+    animation: fadeIn .4s ease-in-out;
 }
 
 .movieModel.active , .backDrop.active{
 
     display: block;
+}
+
+.movieCard{
+
+    background-color: rgba(0,0,0,.4);
+}
+
+.movieCard h5{
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 30px;
+    font-size: 20px;
+}
+
+.movieCard figure{
+
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.movieCard figure img{
+
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movieCard figcaption{
+
+   position: absolute;
+   top: 30%;
+   height: 70%;
+   width: 100%;
+   padding: 10px;
+   overflow-y: auto;
+   background-color: rgba(0,0,0,.4);
+   transform: translateY(100%);
+   transition: all .4s ease-in-out;
+}
+
+.movieCard:is(:hover,:active,:focus) figcaption{
+
+    transform: translateY(0);
+}
+
+@keyframes slideDown {
+    
+    from{
+
+        transform: translateY(-50px);
+    }
+    to{
+
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    
+    form{
+
+        opacity: 0;
+    }
+    to{
+
+        opacity: 1;
+    }
 }
