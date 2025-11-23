@@ -14,7 +14,7 @@ const backDrop = document.getElementById("backDrop");
 const nfxBtn = document.getElementById("nfxBtn");
 const closeBtns = document.querySelectorAll(".closeBtns");
 const movieContainer = document.getElementById("movieContainer");
-
+const spinner = document.getElementById("spinner");
 
 
 const BaseURL = "https://post-task-xhr-default-rtdb.firebaseio.com/";
@@ -70,6 +70,8 @@ const onHideShow = () => {
 
 const MakeAPICall = async (apiURL, method, body) => {
 
+    spinner.classList.remove("d-none");
+
     body = body ? JSON.stringify(body) : null;
 
     let configObj = {
@@ -92,6 +94,10 @@ const MakeAPICall = async (apiURL, method, body) => {
     catch (err) {
 
         SnackBar("error", err);
+    }
+    finally{
+
+        spinner.classList.add("d-none");
     }
 }
 
@@ -237,7 +243,7 @@ const UIUpdata = (m) => {
 
     onHideShow();
 
-    
+
 }
 
 const FetchMovies = async () => {
@@ -284,6 +290,29 @@ const onUpdate = async () => {
     let res = await MakeAPICall(UPDATE_URL, "PATCH", UPDATE_OBJ);
 
     UIUpdata(res);
+
+    SnackBar("success","movie Updated successfully");
+}
+
+const onRemove = async (ele) => {
+
+    let result = await Swal.fire({
+        title: "Do you want to Remove movie ?",
+        showCancelButton: true,
+        confirmButtonText: "Remove",
+    })
+    if (result.isConfirmed) {
+
+        let REMOVE_ID = ele.closest(".col-md-3").id;
+
+        let REMOVE_URL = `${BaseURL}/movies/${REMOVE_ID}.json`;
+
+        let res = await MakeAPICall(REMOVE_URL, "DELETE", null);
+
+        ele.closest(".col-md-3").remove();
+        
+        SnackBar("success","movie Removed successfully");
+    }
 }
 
 const onSubmit = async (eve) => {
@@ -303,7 +332,8 @@ const onSubmit = async (eve) => {
     CreateMovie(movieObj, res.name);
 
     onHideShow();
-
+   
+    SnackBar("success","movie Added successfully");
 }
 
 closeBtns.forEach(b => b.addEventListener("click", onHideShow));
