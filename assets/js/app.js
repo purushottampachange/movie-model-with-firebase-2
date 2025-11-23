@@ -97,7 +97,7 @@ const Templating = (arr) => {
 
         return `
            
-              <div class="col-md-3">
+              <div class="col-md-3" id="${m.id}">
                 <div class="card movieCard text-white mb-4">
                     <div class="card-header p-0">
                         <div class="row">
@@ -136,6 +136,51 @@ const Templating = (arr) => {
 
 }
 
+const CreateMovie = (m, id) => {
+
+    let div = document.createElement("div");
+
+    div.className = "col-md-3";
+
+    div.id = id;
+
+    div.innerHTML = `
+         
+                <div class="card movieCard text-white mb-4">
+                    <div class="card-header p-0">
+                        <div class="row">
+                            <div class="col-10">
+                                <h5>${m.title}</h5>
+                            </div>
+                            <div class="col-2">
+                               <h6><span class="badge ${RatingClass(m.rating)}">${m.rating}</span></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <figure>
+                            <img src=${m.imgPath}
+                                alt="${m.title}">
+                            <figcaption>
+                                
+                                <h6>${m.title}</h6>
+                                <p>
+                                  ${m.content}
+                                </p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between p-0">
+                        <button class="btn btn-sm btn-success">Edit</button>
+                        <button class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                </div>
+     
+    `;
+
+    movieContainer.prepend(div);
+}
+
 const FetchMovies = async () => {
 
     let res = await MakeAPICall(postURL, "GET", null);
@@ -147,5 +192,26 @@ const FetchMovies = async () => {
 
 FetchMovies();
 
+const onSubmit = async (eve) => {
+
+    eve.preventDefault();
+
+    let movieObj = {
+
+        title: movieName.value,
+        content: movieDesc.value,
+        imgPath: movieImg.value,
+        rating: movieRating.value
+    }
+
+    let res = await MakeAPICall(postURL, "POST", movieObj);
+    
+    CreateMovie(movieObj,res.name);
+
+    onHideShow();
+    
+}
+
 closeBtns.forEach(b => b.addEventListener("click", onHideShow));
 nfxBtn.addEventListener("click", onHideShow);
+movieForm.addEventListener("submit", onSubmit);
